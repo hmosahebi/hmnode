@@ -1,11 +1,7 @@
 // connect to db
 var mongoose = require('mongoose');
 if(process.env.MONGODB_DB_PASSWORD){
-    var url = process.env.MONGODB_DB_USERNAME + ":" +
-        process.env.MONGODB_DB_PASSWORD + "@" +
-        process.env.MONGODB_DB_HOST + ':' +
-        process.env.MONGODB_DB_PORT + '/' +
-        process.env.APP_NAME+'/reports';
+    var url = 'admin:7471@mongodb/reports';
 }else{
     var url = 'localhost/reports';
 }
