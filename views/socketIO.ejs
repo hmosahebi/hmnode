@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+<% include Templates/header.ejs %>
+<h1><%= title %></h1>
+<p class="info"></p>
+<div class="container">
+    PublicBoard:<br><div id="pbBoard"></div>
+    <input type="text" id="boardText"><div class="btn" id="addText">Public</div>
+</div>
+<script>
+    var socket = io("http://hmnode-nodesproject.rhcloud.com:8000");
+    var time;
+    socket.on('connect', function (socket) {
+        //console.log('Client Socket Connected!');
+    })
+    socket.on('publishMessage' , function(data){
+        if(data.length){
+            for(var i=0; i<data.length; i++){
+                $('#pbBoard').append(data[i].time +' - '+ data[i].message+'<br>');
+            }
+        }
+    })
+    $('#addText').on('click',function(){
+        socket.emit('generateMessage', { time : new Date().getHours()+':'+new Date().getMinutes()+':'+new Date().getSeconds(), message : $('#boardText').val()});
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+<% include Templates/header.ejs %>
+<h1><%= title %></h1>
+    <form action="/uploadFile" enctype="multipart/form-data" method="POST">
+        <label class="uploadFile">
+            <div class="uploadBtn"></div></div>
+            <input type="file" name="file" accept="image/jpeg,image/gif,image/png,application/pdf"/>
+        </label><br>
+        <input type="submit" value="Upload File">
+    </form>
+<p><%= notifications %></p>
+</body>
+</html>

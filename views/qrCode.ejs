@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+<% include Templates/header.ejs %>
+<h1><%= title %></h1>
+<form action="/qrCode" method='POST' accept-charset="utf-8">
+    URL:<br><input type="text" name="url"><br><br>
+    <input type="submit" value="Generate" class="btn">
+</form>
+<p><%=notification %></p>
+<% if(qrCodeSrc != ""&& qrCodeSrc != undefined){ %>
+    <img src="<%=qrCodeSrc.replace('<img src="','').replace('" width="164" height="164"/>','') %>" height="164" width="164"/>
+<% } %>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<% include Templates/header.ejs %>
+<h1><%= title %></h1>
+
+<table class="uploadTable">
+    <thead>
+    <tr class="table_head">
+        <td>Upload List</td>
+    </tr>
+    </thead>
+    <% uploads.forEach(function(item){%>
+    <tr>
+        <td id="<%= item %>"><a href="uploaded/<%= item %>" target="_blank"><%= item %></a></td>
+    </tr>
+    <% }); %>
+</table>
+
+</body>
+</html>

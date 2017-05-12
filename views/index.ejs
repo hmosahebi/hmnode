@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<% include Templates/header.ejs %>
+<h1><%= title %></h1>
+<p>Version from <%= updateDate%> includes:</p>
+<ul>
+    <% infos.forEach(function(item){%>
+    <li><%=item %></li>
+    <% })%>
+</ul>
+
+<ul>
+    <% toDos.forEach(function(item){%>
+    <li><%=item %></li>
+    <% })%>
+</ul>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<% include Templates/header.ejs %>
+<h1><%= title %></h1>
+<form action="/addReport" method='POST' accept-charset="utf-8">
+    User:<br><input type="text" name="user"><br><br>
+    Report:<br><textarea name="reports" rows="4" cols="50"></textarea><br>
+    <input type="submit" value="Send" class="btn">
+</form>
+<script>
+    var _msgText =<%-JSON.stringify(msgText)%>
+    var _msgType =<%-JSON.stringify(msgType)%>
+    if(_msgText !==""){
+        swal(_msgText, "", _msgType)
+    }
+</script>
+</body>
+</html>

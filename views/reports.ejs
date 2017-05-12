@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<body>
+<% include Templates/header.ejs %>
+<h1><%= title %></h1>
+<table class="reportTable">
+    <thead>
+    <tr class="table_head">
+        <td>User</td>
+        <td>Report</td>
+        <td>Edit</td>
+    </tr>
+    </thead>
+    <% reports.forEach(function(item){%>
+    <tr>
+        <td id="<%= item._id %>"><%= item.name %></td>
+        <td><%= item.message %></td>
+        <td><div data-id="<%= item._id %>" class="deleteIcon"></div>
+            <div data-id="<%= item._id %>" class="editIcon"></div>
+            <div data-id="<%= item._id %>" class="updateIcon"></div>
+        </td>
+    </tr>
+    <% }); %>
+</table>
+<script>
+    $('.deleteIcon').on('click',function(e){
+        var data  = { id: $(this).attr('data-id') , method: "delete" };
+        swal({
+            title: "Are you sure?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+            closeOnConfirm: false
+        },
+        function() {
+            $.ajax({
+                url: "/reports",
+                type: "POST",
+                data: data,
+                success: function (data) {
+                    location.reload();
+                },
+            });
+            swal({
+                title: "Report Deleted!",
+                text: "",
+                type: "success",
+                showConfirmButton: false,
+                timer: 1000
+            });
+        });
+    })
+
+    $('.editIcon').on('click',function(){
+        var _id = $(this).attr('data-id');
+        var _name = $('#'+_id).text();
+        var _report = $('#'+_id).next().text();
+        $('#'+_id).empty().append('<input name="newName" type="text" value="'+_name+'"></input>');
+        $('#'+_id).next().empty().append('<textarea rows="4" cols="50" name="newReport" type="text">'+_report+'</textarea>');
+        $(this).next(".updateIcon").css('display','block');
+        $(this).hide();
+    })
+
+    $('.updateIcon').on('click',function(e){
+        var _id = $(this).attr('data-id');
+        var _name = $("input[name=newName]").val();
+        var _report = $("textarea[name=newReport]").val();
+        var data  = { id: _id , user: _name, reports:_report, method: "update"};
+        swal({
+            title: "save changes?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+            closeOnConfirm: false
+        },
+        function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url: "/addReport",
+                    type: "POST",
+                    data: data,
+                    success: function (data) {
+                        location.reload();
+                    },
+                });
+                swal({
+                    title: "Report Updated!",
+                    text: "",
+                    type: "success",
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+                location.reload();
+            } else {
+                location.reload();
+            }
+        });
+    })
+</script>
+</body>
+</html>

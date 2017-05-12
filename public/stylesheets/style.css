@@ -1,0 +1,151 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1 {
+  color: #00B7FF;
+}
+
+.reportTable, th, td, .uploadTable, th, td{
+  border: solid #323232 1px;
+  border-collapse: collapse;
+  padding:10px;
+  width:480px;
+}
+
+.reportTable thead,.uploadTable thead{
+  background-color: #323232;
+  color:#fff;
+}
+
+.reportTable tr:nth-child(even), .uploadTable tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
+.editIcon{
+  display:block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  float: left;
+  background: url('/images/icons/edit.png') no-repeat;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.deleteIcon{
+  display:block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  float: left;
+  background: url('/images/icons/delete.png') no-repeat;
+  cursor: pointer;
+}
+
+.updateIcon{
+  display:block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  float: left;
+  background: url('/images/icons/update.png') no-repeat;
+  cursor: pointer;
+  margin-left:20px;
+  display:none;
+}
+
+.uploadFile {
+  position: relative;
+  overflow: hidden;
+  float: left;
+  clear: left;
+}
+
+.uploadFileLabel{
+  padding-top: 15px;
+  float:left;
+  color:#999999;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.uploadFile input[type="file"] {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  font-size: 100px;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+
+.uploadBtn{
+  display:block;
+  position: relative;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  float: left;
+  background: url('/images/icons/upload.png') no-repeat;
+  cursor: pointer;
+}
+
+.info{
+  color: #323232;
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-style: italic;
+}
+
+.btn{
+  width: auto;
+  height:auto;
+  display: block;
+  background-color: #00B7FF;
+  color: #fff;
+  padding: 4px;
+  cursor: pointer;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  border:none;
+}
+
+.container{
+  float: left;
+  max-width:480px;
+}
+
+@media print{
+  .btn{
+    display: none;
+  }
+}
+
+#boardText{
+  float:left;
+  width:360px;
+  margin-right:2px;
+
+}
+
+#pbBoard{
+  float:left;
+  width:361px;
+  height:200px;
+  border: 1px solid #eaeaea;
+}
+
+#addText{
+  float:left;
+  max-width:180px;
+}
