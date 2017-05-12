@@ -1,11 +1,11 @@
 // connect to db
 var mongoose = require('mongoose');
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-    var url = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-        process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-        process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-        process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-        process.env.OPENSHIFT_APP_NAME+'/reports';
+if(process.env.MONGODB_DB_PASSWORD){
+    var url = process.env.MONGODB_DB_USERNAME + ":" +
+        process.env.MONGODB_DB_PASSWORD + "@" +
+        process.env.MONGODB_DB_HOST + ':' +
+        process.env.MONGODB_DB_PORT + '/' +
+        process.env.APP_NAME+'/reports';
 }else{
     var url = 'localhost/reports';
 }
